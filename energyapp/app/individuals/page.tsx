@@ -1,3 +1,3 @@
 export default function Page() {
-  return <p>Graduates Page</p>;
+  return <p>Individuals Page</p>;
 }
