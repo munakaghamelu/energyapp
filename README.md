@@ -14,7 +14,8 @@ Tech Stack:
 
 Development Period:
 - Ideation/Design - Tuesday 14th November, 2023
-- Implementation - Friday 17th November
+- Implementation Commences - Friday 17th November
+-   Frontend Update - Friday 8th December, completed most pages
 
 Resources:
 - https://nextjs.org/learn/dashboard-app/css-styling
