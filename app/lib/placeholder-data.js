@@ -17,7 +17,7 @@ const users = [
 
 const forms = [
   {
-    user_id: user[0].id,
+    user_id: users[0].id,
     positive: 3,
     good: 4,
     pleasant: 3,
@@ -32,3 +32,8 @@ const forms = [
     angry: 3,
   },
 ];
+
+module.exports = {
+  users,
+  forms,
+};
