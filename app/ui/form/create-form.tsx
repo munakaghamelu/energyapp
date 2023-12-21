@@ -5,12 +5,114 @@ import {
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 
+const scores = ['Positive Score', 'Good Score', 'Pleasant Score', 'Happy Score', 'Joyful Score', 'Contented Score', 'Negative Score', 'Bad Score', 'Unpleasant Score', 'Sad Score', 'Afraid Score', 'Angry Score']
+
+function RadioButtons() {
+  return (
+    <div>
+      {scores.map((score, index) => (
+        <fieldset key={index}>
+          <legend className="mb-2 block text-sm font-medium">
+            {score}
+          </legend>
+          <div className='rounded-md border border-gray-200 by-white px&#91;14px&#93; py-3'>
+            <div className='flex gap-4'>
+              <div className="flex items-center">
+                <input 
+                  id={`1-${index}`}
+                  name={`score-${index}`}
+                  type="radio"
+                  value="1"
+                  className='h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2'
+                />
+                <label 
+                  htmlFor={`1-${index}`}
+                  className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1.5 text-xs font-medium text-gray-600"
+                  >
+                    1
+                </label>
+              </div>
+              <div className='flex items-center'>
+                <input
+                  id={`2-${index}`}
+                  name={`score-${index}`}
+                  type="radio"
+                  value="2"
+                  className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                />
+                <label
+                  htmlFor={`2-${index}`}
+                  className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-orange-100 px-3 py-1.5 text-xs font-medium text-gray-600"
+                >
+                  2 
+                </label>
+              </div>
+              <div className='flex items-center'>
+                <input
+                  id={`3-${index}`}
+                  name={`score-${index}`}
+                  type="radio"
+                  value="3"
+                  className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                />
+                <label
+                  htmlFor={`3-${index}`}
+                  className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-orange-200 px-3 py-1.5 text-xs font-medium text-gray-600"
+                >
+                  3 
+                </label>
+              </div>
+              <div className='flex items-center'>
+                <input
+                  id={`4-${index}`}
+                  name={`score-${index}`}
+                  type="radio"
+                  value="4"
+                  className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                />
+                <label
+                  htmlFor={`4-${index}`}
+                  className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-orange-300 px-3 py-1.5 text-xs font-medium text-gray-600"
+                >
+                  4 
+                </label>
+              </div>
+              <div className='flex items-center'>
+                <input
+                  id={`5-${index}`}
+                  name={`score-${index}`}
+                  type="radio"
+                  value="5"
+                  className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                />
+                <label
+                  htmlFor={`5-${index}`}
+                  className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-orange-400 px-3 py-1.5 text-xs font-medium text-gray-600"
+                >
+                  5
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      ))}
+    </div>
+  );
+}
+
 export default function Form() {
   return (
-    <form>
-      <div className="rounded-md bg-gray-50 p-4 md:p-6">
-        {/* User Name - Need to get the user id here*/}
+    <main>
+      <div className="flex h-50 shrink-0 items-end rounded-lg bg-orange-500 p-4 md:h-20">
       </div>
-    </form>
+      <form>
+        <div className="rounded-md bg-gray-50 p-4 md:p-6">
+          <div>
+            <RadioButtons/>
+          </div>
+        </div>
+
+      </form>
+    </main>
   )
 }
