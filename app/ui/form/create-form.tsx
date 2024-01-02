@@ -4,6 +4,7 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
+import { createForm } from '@/app/lib/actions';
 
 const scores = ['Positive Score', 'Good Score', 'Pleasant Score', 'Happy Score', 'Joyful Score', 'Contented Score', 'Negative Score', 'Bad Score', 'Unpleasant Score', 'Sad Score', 'Afraid Score', 'Angry Score']
 
@@ -15,8 +16,8 @@ function RadioButtons() {
           <legend className="mb-2 block text-sm font-medium">
             {score}
           </legend>
-          <div className='rounded-md border border-gray-200 by-white px&#91;14px&#93; py-3'>
-            <div className='flex gap-4'>
+          <div className='flex rounded-md border border-gray-200 by-white px&#91;14px&#93; py-3 justify-center'>
+            <div className='flex gap-4 items-center'>
               <div className="flex items-center">
                 <input 
                   id={`1-${index}`}
@@ -104,11 +105,13 @@ export default function Form() {
   return (
     <main>
       <div className="flex h-50 shrink-0 items-end rounded-lg bg-orange-500 p-4 md:h-20">
+        <h1>Please score each emotion by the intensity you feel it, 1: low intensity, 5: high intensity.</h1>
       </div>
-      <form>
+      <form action={createForm}>
         <div className="rounded-md bg-gray-50 p-4 md:p-6">
           <div>
             <RadioButtons/>
+            <Button type="submit">Submit Form</Button>
           </div>
         </div>
 
