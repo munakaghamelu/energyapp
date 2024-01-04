@@ -9,8 +9,8 @@ export type User = {
 }
 
 export type Form = {
-  id: string;
-  user_id: string;
+  id: string; // will be created on the database
+  user_id: string; // needs to be passed from authentication token
   positive: '1' | '2' | '3' | '4' | '5';
   good: '1' | '2' | '3' | '4' | '5';
   pleasant: '1' | '2' | '3' | '4' | '5';
