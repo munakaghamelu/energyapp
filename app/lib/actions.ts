@@ -43,10 +43,16 @@ export async function createForm(formData: FormData) {
   // console.log(rawFormData);
 
   // insert form data into db
-  await sql`
+  try {
+    await sql`
     INSERT INTO forms (user_id, positive, good, pleasant, happy, joyful, contented, negative, bad, unpleasant, sad, afraid, angry)
     VALUES ('410544b2-4001-4271-9855-fec4b6a6442a', ${positive}, ${good}, ${pleasant}, ${happy}, ${joyful}, ${contented}, ${negative}, ${bad}, ${unpleasant}, ${sad}, ${afraid}, ${angry})
   `;
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Create Form.',
+    };
+  }
 
   revalidatePath('/form/create');
   redirect('/form');
