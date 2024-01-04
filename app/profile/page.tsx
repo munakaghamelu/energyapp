@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6">
@@ -9,12 +11,21 @@ export default function Page() {
       </div>
 
       <div className="bg-blue-500 rounded-lg">
-          <img className="h-auto max-w-lg" src={'/assets/defaultProfile.png'} alt="image of user"/>
+          <Image 
+            src={'/assets/defaultProfile.png'} 
+            className="h-auto max-w-lg"
+            width={28}
+            height={28}
+            alt="image of user"/>
       </div>
 
-      <div className="bg-green-500 rounded-lg">Energy Level</div>
+      <div className="bg-green-500 rounded-lg">
+        Energy Level
+        </div>
       
-      <div className="bg-red-500 rounded-lg">Prompt</div>
+      <div className="bg-red-500 rounded-lg">
+        Prompt
+      </div>
     </main>
   );
 }

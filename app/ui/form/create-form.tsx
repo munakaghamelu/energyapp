@@ -1,10 +1,8 @@
-import Link from 'next/link';
-import {
-  CheckIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/outline';
+'use client';
+
 import { Button } from '@/app/ui/button';
 import { createForm } from '@/app/lib/actions';
+import { useFormState } from 'react-dom';
 
 const scores = ['Positive Score', 'Good Score', 'Pleasant Score', 'Happy Score', 'Joyful Score', 'Contented Score', 'Negative Score', 'Bad Score', 'Unpleasant Score', 'Sad Score', 'Afraid Score', 'Angry Score']
 
@@ -102,12 +100,14 @@ function RadioButtons() {
 }
 
 export default function Form() {
+  const initialState = {message: null, errors: {}};
+  const [state, dispatch] = useFormState(createForm, initialState);
   return (
     <main>
       <div className="flex h-50 shrink-0 items-end rounded-lg bg-orange-500 p-4 md:h-20">
         <h1>Please score each emotion by the intensity you feel it, 1: low intensity, 5: high intensity.</h1>
       </div>
-      <form action={createForm}>
+      <form action={dispatch}>
         <div className="rounded-md bg-gray-50 p-4 md:p-6">
           <div>
             <RadioButtons/>
