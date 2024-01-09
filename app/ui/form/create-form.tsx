@@ -23,6 +23,7 @@ function RadioButtons() {
                   type="radio"
                   value="1"
                   className='h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2'
+                  required
                 />
                 <label 
                   htmlFor={`1-${index}`}
@@ -38,6 +39,7 @@ function RadioButtons() {
                   type="radio"
                   value="2"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                  required
                 />
                 <label
                   htmlFor={`2-${index}`}
@@ -53,6 +55,7 @@ function RadioButtons() {
                   type="radio"
                   value="3"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                  required
                 />
                 <label
                   htmlFor={`3-${index}`}
@@ -68,6 +71,7 @@ function RadioButtons() {
                   type="radio"
                   value="4"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                  required
                 />
                 <label
                   htmlFor={`4-${index}`}
@@ -83,6 +87,7 @@ function RadioButtons() {
                   type="radio"
                   value="5"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                  required
                 />
                 <label
                   htmlFor={`5-${index}`}
@@ -101,13 +106,12 @@ function RadioButtons() {
 
 export default function Form() {
   const initialState = {message: null, errors: {}};
-  const [state, dispatch] = useFormState(createForm, initialState);
   return (
     <main>
       <div className="flex h-50 shrink-0 items-end rounded-lg bg-orange-500 p-4 md:h-20">
         <h1>Please score each emotion by the intensity you feel it, 1: low intensity, 5: high intensity.</h1>
       </div>
-      <form action={dispatch}>
+      <form>
         <div className="rounded-md bg-gray-50 p-4 md:p-6">
           <div>
             <RadioButtons/>

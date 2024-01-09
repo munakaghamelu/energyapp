@@ -62,8 +62,9 @@ export type State = {
     sad?: string[];
     afraid?: string[];
     angry?: string[];
-  }
-}
+  };
+  message?: string | null;
+};
 // change the createForm to accept two parameters, new state
 export async function createForm(prevState: State, formData: FormData) {
   const validatedFields = CreateForm.safeParse({
