@@ -105,20 +105,18 @@ function RadioButtons() {
 }
 
 export default function Form() {
-  const initialState = {message: null, errors: {}};
   return (
     <main>
       <div className="flex h-50 shrink-0 items-end rounded-lg bg-orange-500 p-4 md:h-20">
         <h1>Please score each emotion by the intensity you feel it, 1: low intensity, 5: high intensity.</h1>
       </div>
-      <form>
+      <form action={createForm}>
         <div className="rounded-md bg-gray-50 p-4 md:p-6">
           <div>
             <RadioButtons/>
             <Button type="submit">Submit Form</Button>
           </div>
         </div>
-
       </form>
     </main>
   )
