@@ -118,7 +118,7 @@ export default function Form() {
             <RadioButtons/>
             <Button type="submit">Submit Form</Button>
           </div>
-          <div>
+          {/* <div>
             <form
             action={async () => {
               'use server';
@@ -130,7 +130,7 @@ export default function Form() {
                 <div className="hidden md:block">Sign Out</div>
               </button>
             </form>
-          </div>
+          </div> */}
         </div>
       </form>
     </main>
