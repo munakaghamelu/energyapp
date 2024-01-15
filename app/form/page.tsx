@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { signOut } from '@/auth';
+import { Button } from '@/app/ui/button';
 
 export default function Page() {
   return (
@@ -21,6 +23,14 @@ export default function Page() {
         >
           <span>Submit Form</span> <ArrowRightIcon className="w-5 md:w-6" />
         </Link>
+        <form
+            action={async () => {
+              'use server';
+              await signOut({ redirectTo: '/'});
+            }}
+            >
+            <Button type="submit">Sign Out</Button>
+        </form>
         
       </div>
     </main>
