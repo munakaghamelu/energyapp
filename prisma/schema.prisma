@@ -13,7 +13,7 @@ datasource db {
 model Form {
   id          String @default(cuid()) @id
   user        User? @relation(fields: [userId], references: [id])
-  userId      String?
+  userId      String @unique
   positive    Int
   good        Int
   pleasant    Int
@@ -28,11 +28,51 @@ model Form {
   angry       Int
 }
 
+model Account {
+  id                  String @id @default(cuid())
+  userId              String @map("user_id")
+  type                String
+  provider            String
+  providerAccountId   String @map("provider_account_id")
+  refresh_token       String?
+  access_token        String?
+  expires_at          Int?
+  token_type          String?
+  scope               String?
+  id_token            String?
+  session_state       String?
+  oauth_token_secret  String?
+  oauth_token         String?
+
+  user User @relation(fields:[userId], references:[id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id            String  @id @default(cuid())
+  sessionToken  String  @unique@map("session_token")
+  userId        String
+  expires       DateTime
+  user          User    @relation(fields:[userId], references:[id], onDelete: Cascade)
+}
+
 model User {
-  id          String    @default(cuid()) @id
-  name        String?
-  email       String?   @unique
-  role        String?
-  forms       Form[]
-  @@map(name: "users")
+  id            String    @default(cuid()) @id
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  role          String?
+  form          Form?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model VerificationToken {
+  id         Int      @id @default(autoincrement())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
