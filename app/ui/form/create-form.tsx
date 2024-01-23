@@ -2,7 +2,7 @@ import { Button } from '@/app/ui/button';
 import { createForm } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
 import { PowerIcon } from '@heroicons/react/24/outline';
-import { signOut } from '@/auth';
+import { signOut } from '@/lib/auth';
 
 const scores = ['Positive Score', 'Good Score', 'Pleasant Score', 'Happy Score', 'Joyful Score', 'Contented Score', 'Negative Score', 'Bad Score', 'Unpleasant Score', 'Sad Score', 'Afraid Score', 'Angry Score']
 

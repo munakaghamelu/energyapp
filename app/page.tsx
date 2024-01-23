@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   return (
@@ -16,17 +17,17 @@ export default function Home() {
 
       <div className="flex grow justify-center gap-6 p-4">
         <Link
-          href="/signin"
+          href="/api/auth/signin"
           className="flex items-center gap-5 self-start rounded-lg bg-orange-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 md:text-base"
         >
           <span>Sign in</span> <ArrowRightIcon className="w-5 md:w-6" />
         </Link>
-        <Link
+        {/* <Link
           href="/signup"
           className="flex items-center gap-5 self-start rounded-lg bg-orange-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 md:text-base"
         >
           <span>Sign up</span> <ArrowRightIcon className="w-5 md:w-6" />
-        </Link>
+        </Link> */}
       </div>
     </main>
   )

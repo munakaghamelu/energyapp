@@ -1,5 +1,12 @@
 import Image from 'next/image';
 import prisma from '@/lib/prisma';
+import { GetStaticProps } from "next";
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const data = await prisma.form.findMany({
+//     where: { user }
+//   })
+// }
 
 export default function Page() {
   return (

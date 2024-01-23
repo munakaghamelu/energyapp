@@ -1,10 +1,17 @@
 import Image from 'next/image'
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { signOut } from '@/auth';
+// import { signOut } from '@/lib/auth';
 import { Button } from '@/app/ui/button';
+import { useRouter } from 'next/router';
+import { signOut, useSession } from 'next-auth/react';
 
-export default async function Page() {
+
+const Page: React.FC = () => {
+  const router = useRouter();
+  const isActive: (pathname: string) => boolean = (pathname) => router.pathname === pathname;
+  const { data: session, status } = useSession();
+
   return (
     <main className="flex min-h-screen flex-col p-6">
       <div className="flex h-20 shrink-0 items-end rounded-lg bg-orange-500 p-4 md:h-52">
@@ -12,7 +19,7 @@ export default async function Page() {
 
       <div className="flex flex-col grow gap-6 shrink-0 justify-center text-center rounded-lg bg-gray-50 p-4 md:h-52">
         <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
-          <strong>Welcome [Insert Username], please click here to submit form.</strong> 
+          <strong>Welcome {session?.user?.name}, please click here to submit form.</strong> 
         </p>
       </div>
 
@@ -23,16 +30,21 @@ export default async function Page() {
         >
           <span>Submit Form</span> <ArrowRightIcon className="w-5 md:w-6" />
         </Link>
-        <form
+        <button onClick={() => signOut()}>
+          <a>Sign Out</a>
+        </button>
+        {/* <form
             action={async () => {
               'use server';
               await signOut({ redirectTo: '/'});
             }}
             >
             <Button type="submit">Sign Out</Button>
-        </form>
+        </form> */}
         
       </div>
     </main>
   )
-}
+};
+
+export default Page;
