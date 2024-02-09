@@ -1,49 +1,30 @@
-// import { NextApiHandler } from 'next';
-// import NextAuth from 'next-auth';
-// import { PrismaAdapter } from '@next-auth/prisma-adapter';
-// import GitHubProvider from 'next-auth/providers/github';
-// import prisma from '../../../lib/prisma';
-
-// const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
-// export default authHandler;
-
-// // console.log("test!")
-// // console.log(process.env.AUTH_SECRET);
-
-// const options = {
-//   providers: [
-//     GitHubProvider({
-//       clientId: process.env.GITHUB_ID,
-//       clientSecret: process.env.GITHUB_SECRET,
-//     }),
-//   ],
-//   adapter: PrismaAdapter(prisma),
-//   secret: process.env.AUTH_SECRET,
-// };
-
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { NextAuthOptions } from "next-auth"
 import GitHubProvider from "next-auth/providers/github"
 import { db } from "@/lib/db"
+import prisma from "@/lib/prisma";
 
-export const authOptions: NextAuthOptions = {
+if (!process.env.GITHUB_ID || !process.env.GITHUB_SECRET)
+  throw new Error("Failed to initialize Github authentication");
+
+export const authOptions = {
+  providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    })
+  ],
   adapter: PrismaAdapter(db as any),
   secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",
   },
-  // pages: {
-  //   signIn: "/signin",
-  // },
-  providers: [
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-  ],
   callbacks: {
-    async session({ token, session }) {
+    async session({session, token }) {
+      console.log("Calls the session function!")
       if (token) {
+        console.log("Here is the token!")
+        console.log(token)
         session.user.id = token.id
         session.user.name = token.name
         session.user.email = token.email
@@ -51,6 +32,11 @@ export const authOptions: NextAuthOptions = {
       return session
     },
     async jwt({ token, user }) {
+      console.log("Calls the jwt function!")
+      console.log(token)
+      console.log(user)
+
+      // check the user exists in the db already
       const dbUser = await db.user.findFirst({
         where: {
           email: token.email,
@@ -71,4 +57,8 @@ export const authOptions: NextAuthOptions = {
       }
     },
   },
-}
+  pages: {
+    signIn: "/auth/signin"
+  },
+} as NextAuthOptions;
+
