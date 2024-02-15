@@ -21,7 +21,7 @@ export const authOptions = {
   },
   callbacks: {
     async session({session, token }) {
-      console.log("Calls the session function!")
+      ("Calls the session function!")
       if (token) {
         console.log("Here is the token!")
         console.log(token)
@@ -56,9 +56,6 @@ export const authOptions = {
         email: dbUser.email,
       }
     },
-  },
-  pages: {
-    signIn: "/auth/signin"
   },
 } as NextAuthOptions;
 
