@@ -3,10 +3,21 @@ import { createForm } from '@/app/lib/actions';
 import { useFormState } from 'react-dom';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut } from '@/lib/auth';
+import React, { useState } from 'react';
 
-const scores = ['Positive Score', 'Good Score', 'Pleasant Score', 'Happy Score', 'Joyful Score', 'Contented Score', 'Negative Score', 'Bad Score', 'Unpleasant Score', 'Sad Score', 'Afraid Score', 'Angry Score']
+const scores = ['How POSITIVE are you feeling? [Score 1 if not very and 5 if extremely]', 'How GOOD are you feeling? [Score 1 if not very and 5 if extremely]', 'How PLEASANT are you feeling? [Score 1 if not very and 5 if extremely]', 'How HAPPY are you feeling? [Score 1 if not very and 5 if extremely]', 'How JOYFUL are you feeling? [Score 1 if not very and 5 if extremely]', 'How CONTENT are you feeling? [Score 1 if not very and 5 if extremely]', 'How NEGATIVE are you feeling? [Score 1 if not very and 5 if extremely]', 'How BAD are you feeling? [Score 1 if not very and 5 if extremely]', 'How UNPLEASANT are you feeling? [Score 1 if not very and 5 if extremely]', 'How SAD are you feeling? [Score 1 if not very and 5 if extremely]', 'How AFRAID are you feeling? [Score 1 if not very and 5 if extremely]', 'How ANGRY are you feeling? [Score 1 if not very and 5 if extremely]']
 
 function RadioButtons() {
+  // const [positive, setPositive] = useState('');
+  // const [good, setGood] = useState('');
+  // const [pleasant, setPleasant] = useState('');
+  // const [happy, setHappy] = useState('');
+  // const [joyful, setJoyful] = useState('');
+  // const [content, setContent] = useState('');
+  // const [negative, setNegative] = useState('');
+// up to here
+// https://vercel.com/guides/nextjs-prisma-postgres
+  
   return (
     <div>
       {scores.map((score, index) => (
@@ -18,6 +29,7 @@ function RadioButtons() {
             <div className='flex gap-4 items-center'>
               <div className="flex items-center">
                 <input 
+                  // onChange={set}
                   id={`1-${index}`}
                   name={`score-${index}`}
                   type="radio"
@@ -121,3 +133,28 @@ export default function Form() {
     </main>
   )
 }
+
+
+// export default function Form() {
+//   const submitData = async (e: React.SyntheticEvent) => {
+//     e.preventDefault();
+//     // TODO
+//     // You will implement this next ...
+//   };
+//   return (
+//     <main>
+//       <div className="flex h-50 shrink-0 items-end rounded-lg bg-orange-500 p-4 md:h-20">
+//         <h1>Please score each emotion by the intensity you feel it, 1: low intensity, 5: high intensity.</h1>
+//       </div>
+//       <form onSubmit={submitData}>
+//         <div className="rounded-md bg-gray-50 p-4 md:p-6">
+//           <div>
+//             <RadioButtons
+//             />
+//             <Button type="submit">Submit Form</Button>
+//           </div>
+//         </div>
+//       </form>
+//     </main>
+//   )
+// }
